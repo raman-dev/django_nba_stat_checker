@@ -100,8 +100,6 @@ def create_teams():
         i+=1
 
 def player_to_teams():
-    self.create_teams()
-    self.update_team()
     #get every record from the general stat database that has season_id 2018-2019
     record_list = PlayerGeneralStatRecord.objects.filter(season_id='2018-19')
     #the higher ocunt on the record
