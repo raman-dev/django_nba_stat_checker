@@ -5,7 +5,6 @@ add_players.py
 add_records.py
 update_player_team.py
 git_commit.bat
-players.db
 appshell.bat    
 debug_web.bat
 run.bat
