@@ -1,0 +1,69 @@
+<!DOCTYPE html class="h-100">
+<head>
+    {% block title %}<title>Nba Stat Checker</title>{% endblock %}
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Language" content="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="h-100" style="padding-top: 60px" >
+    <nav class="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <div class="nbap-nav__svg">
+                <svg width="90" height="40" viewBox="0 0 90 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>webSVG</title><defs><path id="a" d="M0 20V0h17.653v40H0z"/><path id="c" d="M45.946 39.04V.96H.4v38.08h45.546z"/></defs><g fill="none" fill-rule="evenodd"><g transform="translate(11)"><mask id="b" fill="#fff"><use xlink:href="#a"/></mask><path d="M17.653 4.16v31.734c0 2.293-1.866 4.106-4.16 4.106H4.16C1.866 40 0 38.187 0 35.894V4.16A4.165 4.165 0 0 1 4.16 0h9.387c2.24 0 4.106 1.867 4.106 4.16" fill="#FFF" mask="url(#b)"/></g><path d="M24.546 39.04H15.16c-1.76 0-3.2-1.387-3.2-3.146V4.16c0-1.76 1.44-3.2 3.2-3.2h5.333c-1.013.426-1.174.853-1.227 2.293-.16.054-.533-.16-.373.747 0 0 .053.586.267.48-.214 1.493.053 1.653-1.547 1.706l-.053.107c-1.6.16-2.08-.053-3.414 2.667 0 0-.373.853-.48 1.173-.32.694-1.12 2.24-1.333 3.253-.107.321-.266.427-.054.907.321.693-.212.853 1.6.8v.426s-.479.427-.586.641c-.107.266-.373 1.493-.373 2.08.053 1.546 1.28 2.826 1.653 4.32l.853.16c.427 1.013 2.453 3.893 2.88 4.266.107.267.64.587.907.96.267.214 1.707 1.814 3.413 2.774 0 0 .32.587.427 1.066-.533.427.533 1.28.907 2.667 0 .213-.32.373.16.854-.053 2.08-.64 3.2.426 3.733" fill="#1D428A"/><path d="M21.186 6.72c-.16-.106-.107-.32 0-.427.267-.053.586-.586.853-1.173.213 0 .267-.213.374-.32.213-.373.48-.693.16-.907.693-1.279.213-2.186-.16-2.186-.16-.32-.427-.533-.907-.747h3.04c1.706 0 3.146 1.44 3.146 3.2v15.307a3.885 3.885 0 0 0-.373-.64c0-.427-.426-.427-.587-.587-.106-.106.107-.213-.639-.374-.16-.106-.267-1.226-.267-1.226-.16-.747-.427-1.28-.8-2.08-.214-.373-.32-1.653-.533-2.293.16-2.934-.8-3.84-1.547-4.32-.32-.16-.427-.32-.747-.48V7.36c-.213-.213-.693-.427-1.013-.64zm6.506 29.174c0 1.599-1.173 2.88-2.666 3.146h-.053c1.386-.853.533-2.454.266-3.414 0-.052.053-.106.053-.159.107-.107-.053-.427-.053-.427-.16-.107-.213-.907-.32-1.28-.16-.587.267-1.6.267-1.974 0-.319-.267-.799-.747-1.439-.107-.107-.426-3.094-.747-3.841-.426-1.013-.586-.852-1.066-2.133-.427-.853-.107-2.132-1.013-5.12l.213-.213s-.694-2.56-.96-3.253c-.214-.747-.64-.8-.64-.8s0-.267.053-.32c0-.16.853-2.294.907-2.347 0-.053 1.227-.853 1.227-.746.106.533.586 3.199.746 3.626.214.427.907 1.76 1.227 2.56a2.864 2.864 0 0 0-2.134 2.773 2.811 2.811 0 0 0 2.827 2.827c1.173 0 2.187-.746 2.613-1.813v14.347z" fill="#C8102E"/><g transform="translate(33)"><mask id="d" fill="#fff"><use xlink:href="#c"/></mask><path d="M37.146 27.573h2.72l-.426-6.986c-.16-2.773-.587-11.573-.907-16.32h-.213l-.747 16.32-.427 6.986zm2.987 4.32h-3.2l-.427 7.148h-5.172L35.067.96h7.253l3.627 38.08H40.56l-.427-7.148zm-17.6-9.386V34.24h.853c1.6 0 2.08-.905 2.08-2.72v-6.452c0-1.867-.587-2.56-2.293-2.56h-.64zm0-16.747v12.586h.64c1.814 0 2.293-.692 2.293-2.773V8.32c0-1.76-.533-2.56-2.08-2.56h-.853zm-5.12 33.28V.96h6.347c4.213 0 6.826 2.293 6.826 7.626v5.6c0 3.468-1.066 5.227-2.56 6.134 1.494.96 2.56 2.666 2.56 5.6v5.547c0 5.227-2.773 7.574-6.826 7.574h-6.347zm-12.533 0H.4V.96h6.933l4.64 31.413c-.693-7.466-1.6-19.52-1.6-25.866V.96h4.48v38.08H8.506L4.24 8.534c.373 6.826.64 14.986.64 19.572V39.04z" fill="#FFF" mask="url(#d)"/></g></g></svg>
+            </div>    
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#mNavbar" aria-controls="#mNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="mNavbar">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'players' %}a">Players</a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'teams' %}">Teams</a></li>
+            </ul> 
+            <form action="/search/" class="flex-nowrap form-inline mb-0" method="GET">
+                {% csrf_token %}
+                {{ form }}
+                <button class="btn btn-outline-light mx-1 rounded-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <div class="col-lg-12 px-0">
+                {% block content %}{% endblock %}
+                <div class="row">
+                    <div class="col-lg-9 offset-2">
+                        {% block pagination %}
+                            {% if is_paginated %}
+                                <div class="pagination p-0">
+                                    <span class="page-links">
+                                        {% if page_obj.has_previous %}
+                                            <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+                                        {% endif %}
+                                        <span class="page-current">
+                                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                                        </span>
+                                        {% if page_obj.has_next %}
+                                            <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+                                        {% endif %}
+                                    </span>
+                                </div>
+                            {% endif %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

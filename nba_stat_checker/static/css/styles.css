@@ -1,0 +1,13 @@
+:root{
+   --mPrimary-color:#343a40; 
+   --mPrimary-dark:#5e646b;
+   --mPrimary-light:#0e141a;
+};
+
+.player_bio p{
+   margin: 0;
+};
+
+.azlinks{
+   padding: 4px;
+}

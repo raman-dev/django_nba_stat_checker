@@ -1,0 +1,41 @@
+{% extends "nba_stat_checker/base_alt.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row py-2">
+            <div class="col-lg-9 offset-2">
+                <div class="media">
+                        <img team-logo="" width="140" height="140" class="stats-team-list__team-logo team-img" abbr="{{ team.team_abbreviation }}" type="image/svg+xml" src="https://stats.nba.com/media/img/teams/logos/{{ team.team_abbreviation }}_logo.svg" alt="{{ team.name }} logo" title="{{ team.name }} logo">    
+                        <div class="media-body align-self-center">
+                            <h1>{{ team.name }}</h1>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-lg-9 offset-2">
+                <table class="table table-sm table-responsive">
+                    <tbody>
+                        {% for player_list in player_cols %}
+                        <tr>
+                            {% for player in player_list %}
+                            <td>
+                                <div class="media">
+                                    {% load static %}
+                                    <img style="background-color: lavender" class="align-self-center" src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/{{ player.player_id }}.png">
+                                    <div class="media-body ">
+                                        <a href="{{ player.get_absolute_url }}">{{ player.full_name }}</a>
+                                        <p><strong>First Name: </strong>{{ player.first_name }}
+                                        <br><strong>Last Name: </strong>{{ player.last_name }}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

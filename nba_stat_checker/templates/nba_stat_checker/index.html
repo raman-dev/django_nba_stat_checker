@@ -1,0 +1,25 @@
+{% extends "nba_stat_checker/base_alt.html" %}
+<!--extends adds all html from base_generic to index 
+    but if you define tag block things with the same name they are overridden
+-->
+{% block content %}
+    <div class="jumbotron">
+        <div class="container">
+                <h1 class="display-3">NBA STAT CHECKER</h1>
+                <p>Statistics for basketball players currently active in the NBA <br> developed by <em>EXTRATHICC_BOI23</em></p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Database Info</h2>
+                <p>The nba stat database has the following player count:</p>
+                <ul>
+                    <li><strong>Players:</strong>{{ num_players }}</li>
+                    <li><strong>Visits:</strong>{{ num_visits }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

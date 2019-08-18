@@ -1,0 +1,92 @@
+{% extends "nba_stat_checker/base_alt.html" %}
+
+{% block content %}
+    <script>
+        $(function () {$('[data-toggle="tooltip"]').tooltip()})
+    </script>
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-lg-9 offset-2">
+                <div class="media">
+                    <img src="https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/{{ player.player_id }}.png">
+                    <div class="media-body">
+                        <h1>{{ player.full_name }}</h1>
+                        <p><strong>First Name:</strong>{{ player.first_name }}
+                            <br><strong>Last Name:</strong>{{ player.last_name }}
+                            <br><strong>Team:</strong><a href="{{ player.team.get_absolute_url }}">{{ player.team.name }}({{ player.team.team_abbreviation }})</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9 offset-2">
+                {% if player.playergeneralstatrecord_set.all %}
+                <table class="table table-sm table-bordered table-responsive table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>SEASON</th>
+                            <th>TEAM</th>
+                            <th>AGE</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Games Played">GP</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Games Started">GS</th>
+                
+                            <th data-toggle="tooltip" data-placement="top" title="Minutes Played">MIN</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Field Goals Made">FGM</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Field Goals Attempted">FGA</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Field Goal Percentage">FG%</th>
+                            <th data-toggle="tooltip" data-placement="top" title="3 Point Field Goals Made">3PFGM</th>
+                
+                            <th data-toggle="tooltip" data-placement="top" title="3 Point Field Goals Attempted">3PFGA</th>
+                            <th data-toggle="tooltip" data-placement="top" title="3 Point Field Goal Percentage">3PFG%</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Free Throws Made">FTM</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Free Throws Attempted">FTA</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Free Throw Percentage">FT%</th>
+                
+                            <th data-toggle="tooltip" data-placement="top" title="Offensive Rebounds">OREB</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Defensive Rebounds">DREB</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Total Rebounds">REB</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Assists">AST</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Steals">STL</th>
+                
+                            <th data-toggle="tooltip" data-placement="top" title="Blocks">BLK</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Personal Fouls">PF</th>
+                            <th data-toggle="tooltip" data-placement="top" title="Points">PTS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in player.playergeneralstatrecord_set.all %}
+                        <tr>
+                            <td>{{ record.season_id }}</td>
+                            <td>{{ record.team_abbreviation }}</td>
+                            <td>{{ record.player_age }}</td>
+                            <td>{{ record.gp }}</td>
+                            <td>{{ record.gs }}</td>
+                            <td>{{ record.minp }}</td>
+                            <td>{{ record.fgm }}</td>
+                            <td>{{ record.fga }}</td>
+                            <td>{{ record.fg_pct }}</td>
+                            <td>{{ record.fg3m }}</td>
+                            <td>{{ record.fg3a }}</td>
+                            <td>{{ record.fg3_pct }}</td>
+                            <td>{{ record.ftm }}</td>
+                            <td>{{ record.fta }}</td>
+                            <td>{{ record.ft_pct }}</td>
+                            <td>{{ record.oreb }}</td>
+                            <td>{{ record.dreb }}</td>
+                            <td>{{ record.ast }}</td>
+                            <td>{{ record.stl }}</td>
+                            <td>{{ record.blk }}</td>
+                            <td>{{ record.tov }}</td>
+                            <td>{{ record.pf }}</td>
+                            <td>{{ record.pts }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No Stats Available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

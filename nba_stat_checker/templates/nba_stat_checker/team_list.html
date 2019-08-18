@@ -1,0 +1,27 @@
+{% extends "nba_stat_checker/base_alt.html" %}
+{% block content %}
+    <div class="row h-100 align-items-center justify-content-center" >
+        <table class="table table-sm w-auto table-responsive">
+            <tbody>
+                <tr>
+                    {% for sub_list in team_list %}
+                    <td>
+                        <ul class="list-group">
+                            {% for team in sub_list %}
+                                <li class="list-group-item list-group-item-action">
+                                    <div class="media">
+                                        <img team-logo="" width="70" height="70" class="stats-team-list__team-logo team-img" abbr="{{ team.team_abbreviation }}" type="image/svg+xml" src="https://stats.nba.com/media/img/teams/logos/{{ team.team_abbreviation }}_logo.svg" alt="{{ team.name }} logo" title="{{ team.name }} logo">    
+                                        <div class="media-body align-self-center">
+                                            <a href="{{ team.get_absolute_url }}">{{ team.name }}</a>   
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

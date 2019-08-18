@@ -1,0 +1,15 @@
+{% extends "nba_stat_checker/base_alt.html" %}
+
+{% block content %}
+    <h1>Search Results</h1>
+    <!---->
+    {% if player_list %}
+        <ul>
+        {% for player in player_list %}
+            <li><a href="{{ player.get_absolute_url }}">{{ player.full_name }}</a></li>
+        {% endfor %}         
+        </ul>
+    {% else %}
+    <p>No results.</p>
+    {% endif %}
+{% endblock %}

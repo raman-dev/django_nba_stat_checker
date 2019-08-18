@@ -1,0 +1,33 @@
+{% extends "nba_stat_checker/base_alt.html" %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row pt-2">
+            <div class="col-lg-9 offset-2">
+                <h1>Player List</h1>
+                <ul class="nav nav-tabs">
+                    {% for letter in letter_list %}
+                    <li class="nav-item">
+                        <a class="azlink nav-link" href="{% url 'players' %}{{ letter }}">{{ letter }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="row pt-1">
+            <div class="col-lg-9 offset-2">
+                {% if player_list %}
+                <ul>
+                {% for player in player_list %}
+                    <li>
+                        <a href="{{ player.get_absolute_url }}"> {{ player.full_name }} </a>
+                    </li>
+                {% endfor %}
+                </ul>
+                {% else %}
+                    <p>No players found in database</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
